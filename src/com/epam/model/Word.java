@@ -9,13 +9,10 @@ import java.util.regex.Pattern;
  * Created by Nikolai on 03.12.2015.
  */
 public class Word implements BookComponent {
-    ArrayList<String> value = new ArrayList<String>();
 
     public static Pattern pattern = RegexPattern.WORD_PATTERN.name;
 
-    public Word(BookComponent symbol) {
-        this.value = symbol.getValue();
-
+    public Word() {
     }
 
     public Pattern getPattern() {

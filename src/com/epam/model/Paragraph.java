@@ -12,8 +12,7 @@ public class Paragraph extends Sentence {
 
     private static Pattern pattern = RegexPattern.PARAGRAPH_PATTERN.name;
 
-    public Paragraph(BookComponent component) {
-        super(component);
+    public Paragraph() {
 
     }
 

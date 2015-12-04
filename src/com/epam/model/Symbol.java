@@ -24,8 +24,8 @@ public class Symbol implements BookComponent {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (String string : value) {
-            stringBuilder.append(string);
+        for (String string : this.value) {
+            stringBuilder.append(string + "\n");
         }
         return stringBuilder.toString();
     }
@@ -38,7 +38,7 @@ public class Symbol implements BookComponent {
         try {
             BufferedReader bufferedReader = new BufferedReader (new FileReader(FILE_NAME));
             while((line = bufferedReader.readLine()) != null){
-                stringBuilder.append(line);
+                stringBuilder.append(line + "\n");
             }
         } catch(Exception ex){
             System.out.println(ex.getMessage());

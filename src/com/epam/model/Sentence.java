@@ -12,8 +12,7 @@ public class Sentence extends Word {
 
     public static Pattern pattern = RegexPattern.SENTENCE_PATTERN.name;
 
-    public Sentence(BookComponent symbol) {
-        super(symbol);
+    public Sentence() {
     }
 
     public Pattern getPattern() {

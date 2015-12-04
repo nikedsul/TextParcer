@@ -14,9 +14,9 @@ public class Main {
 
     public static void main(String[] args) {
         Symbol symbol = new Symbol();
-        Word word = new Word(symbol);
-        Sentence sentence = new Sentence(word);
-        Paragraph paragraph = new Paragraph(sentence);
-        System.out.println(symbol.getValue());
+        Word word = new Word();
+        Sentence sentence = new Sentence();
+        Paragraph paragraph = new Paragraph();
+        System.out.println(word.toString());
     }
 }
