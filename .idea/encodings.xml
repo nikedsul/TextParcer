@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/com/epam/model/BookComponent.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/epam/model/Paragraph.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/epam/model/RegexPattern.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/epam/model/Sentence.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/epam/model/Symbol.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/epam/view/Client.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/epam/view/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/textBook.txt" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
