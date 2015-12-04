@@ -15,10 +15,6 @@ public class Sentence extends Word {
     public Sentence() {
     }
 
-    public Pattern getPattern() {
-        return pattern;
-    }
-
     @Override
     public ArrayList<String> getValue() {
         return value;

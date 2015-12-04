@@ -9,7 +9,10 @@ public enum RegexPattern {
     PARAGRAPH_PATTERN   ("^[^(\\.)(.*(/{2}.*|;|\\\\{|}))]*"),
     CODE_PATTERN        (".*(/{2}.*|;|\\{|})"),
     SENTENCE_PATTERN    ("[^\\.]+(\\. )"),
-    WORD_PATTERN        ("(\\d|\\s|(\\p{Punct}))"),
+    WORD_PATTERN        ("(\\d|\\s|)"),
+    PUNCTUATION_PATTERN ("\\p{Punct}"),
+    WHITE_SPACE_PATTERN ("\\s"),
+    LETTER_PATTERN      ("[a-zA-Zа-яА-Я]"),
     SYMBOL_PATTERN        (".");
 
     /** A string for each pattern type */

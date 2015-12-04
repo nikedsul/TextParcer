@@ -10,13 +10,11 @@ import java.util.regex.Pattern;
  */
 public class Word implements BookComponent {
 
-    private static Pattern pattern = RegexPattern.WORD_PATTERN.name;
+    private static Pattern letterPattern = RegexPattern.LETTER_PATTERN.name;
+    private static Pattern whiteSpacePattern = RegexPattern.WHITE_SPACE_PATTERN.name;
+    private static Pattern punctuationPattern = RegexPattern.PUNCTUATION_PATTERN.name;
 
     public Word() {
-    }
-
-    public Pattern getPattern() {
-        return pattern;
     }
 
     @Override
@@ -27,13 +25,21 @@ public class Word implements BookComponent {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        int flag = 0;
         if (value.size() > 0) {
             for (int i = 0; i < value.size(); i++) {
-                Matcher matcher = pattern.matcher(value.get(i));
-                if (!matcher.find()) {
+                Matcher letterMatcher = letterPattern.matcher(value.get(i));
+                Matcher whiteSpaceMatcher = whiteSpacePattern.matcher(value.get(i));
+                Matcher punctuationMatcher = punctuationPattern.matcher(value.get(i));
+                if (letterMatcher.find()) {
                     sb.append(value.get(i));
-                } else {
+                    continue;
+                } else if (whiteSpaceMatcher.find()&& flag == 0) {
                     sb.append("\n");
+                    flag++;
+                    continue;
+                } else if (!whiteSpaceMatcher.find()) {
+                    flag--;
                 }
             }
         } else {
