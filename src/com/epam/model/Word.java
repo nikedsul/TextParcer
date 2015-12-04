@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  */
 public class Word implements BookComponent {
 
-    public static Pattern pattern = RegexPattern.WORD_PATTERN.name;
+    private static Pattern pattern = RegexPattern.WORD_PATTERN.name;
 
     public Word() {
     }
@@ -28,8 +28,13 @@ public class Word implements BookComponent {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         if (value.size() > 0) {
-            for (String component : value) {
-                sb.append(component);
+            for (int i = 0; i < value.size(); i++) {
+                Matcher matcher = pattern.matcher(value.get(i));
+                if (!matcher.find()) {
+                    sb.append(value.get(i));
+                } else {
+                    sb.append("\n");
+                }
             }
         } else {
             return "No symbols have been found!";
@@ -39,9 +44,5 @@ public class Word implements BookComponent {
 
     @Override
     public void compose() {
-        Matcher matcher = pattern.matcher(this.toString());
-        while (matcher.find()) {
-            value.add(matcher.group());
-        }
     }
 }
