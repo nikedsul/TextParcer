@@ -20,13 +20,11 @@ public class Sentence extends Word {
                 Matcher sentenceEndMatcher = sentenceEndPattern.matcher(value.get(i));
                 Matcher whiteSpaceMatcher = whiteSpacePattern.matcher(value.get(i));
                 sb.append(value.get(i));
-                if (flag != 0 && !whiteSpaceMatcher.find()) {
-                    flag = 0;
-                } else if (sentenceEndMatcher.find() || value.get(i).equals("\n")) {
+
+                if (sentenceEndMatcher.find() || value.get(i).equals("\n")) {
                     flag++;
-                } else if ((sentenceEndMatcher.find() || value.get(i).equals("\n")) && flag != 0) {
-                    flag = 0;
                 }
+
                 if (flag != 0 && whiteSpaceMatcher.find()) {
                     Matcher sentenceMatcher = sentencePattern.matcher(sb.toString());
                     if (sentenceMatcher.find()) {

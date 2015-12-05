@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public enum RegexPattern {
     PARAGRAPH_PATTERN       ("^[^(\\.)(.*(/{2}.*|;|\\\\{|}))]*"),
     CODE_PATTERN            (".*(/{2}.*|;|\\{|})"),
-    SENTENCE_PATTERN        ("(\\p{Upper})[^\\.\\?!]+((\\.)|(\\?)|!)"),
+    SENTENCE_PATTERN        ("[А-ЯA-Z]([^?!.\\(]|\\([^\\)]*\\))*[.?!]"),
     WORD_PATTERN            ("(\\d|\\s|)"),
     PUNCTUATION_PATTERN     ("\\p{Punct}"),
     WHITE_SPACE_PATTERN     ("\\s"),
