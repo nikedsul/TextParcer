@@ -8,6 +8,12 @@ import java.util.regex.Pattern;
  * Created by Nikolai on 03.12.2015.
  */
 public interface BookComponent {
+
+    Pattern letterPattern = RegexPattern.LETTER_PATTERN.name;
+    Pattern punctuationPattern = RegexPattern.PUNCTUATION_PATTERN.name;
+    Pattern sentenceEndPattern = RegexPattern.SENTENCE_END_PATTERN.name;
+    Pattern whiteSpacePattern = RegexPattern.WHITE_SPACE_PATTERN.name;
+    Pattern symbolPattern = RegexPattern.SYMBOL_PATTERN.name;
     ArrayList<String> value = new ArrayList<String>();
 
     String toString();

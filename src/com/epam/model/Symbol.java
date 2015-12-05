@@ -32,7 +32,6 @@ public class Symbol implements BookComponent {
 
     @Override
     public void compose() {
-        List<String> list = new ArrayList<String>();
         StringBuilder stringBuilder = new StringBuilder();
         String line;
         try {
@@ -43,7 +42,9 @@ public class Symbol implements BookComponent {
         } catch(Exception ex){
             System.out.println(ex.getMessage());
         }
-        for (Character c : stringBuilder.toString().toCharArray()) {
+        line = stringBuilder.toString().replaceAll("(\\s){2,}", " ");
+        line = line.replaceAll("(\\n){2,}", "\\n");
+        for (Character c : line.toCharArray()) {
             value.add(String.valueOf(c));
         }
     }

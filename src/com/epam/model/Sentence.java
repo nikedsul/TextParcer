@@ -1,16 +1,13 @@
 package com.epam.model;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by Nikolai on 03.12.2015.
  */
 public class Sentence extends Word {
 
-    public static Pattern pattern = RegexPattern.SENTENCE_PATTERN.name;
 
     public Sentence() {
     }
@@ -23,21 +20,27 @@ public class Sentence extends Word {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        int flag = 0;
         if (value.size() > 0) {
-            for (String component : value) {
-                sb.append(component);
+            for (int i = 0; i < value.size(); i++) {
+                Matcher symbolMatcher = symbolPattern.matcher(value.get(i));
+                Matcher sentenceEndMatcher = sentenceEndPattern.matcher(value.get(i));
+                Matcher whiteSpaceMatcher = whiteSpacePattern.matcher(value.get(i));
+                if (symbolMatcher.find()) {
+                    sb.append(value.get(i));
+                } else if (sentenceEndMatcher.find()) {
+                    flag++;
+                } else if (whiteSpaceMatcher.find() && flag != 0) {
+                    sb.append("\n======================================================");
+                }
             }
         } else {
-            return "No words have been found!";
+            return "No symbols have been found!";
         }
         return sb.toString();
     }
 
     @Override
     public void compose() {
-        Matcher matcher = pattern.matcher(this.toString());
-        while (matcher.find()) {
-            value.add(matcher.group());
-        }
     }
 }
