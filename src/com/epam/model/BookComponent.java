@@ -1,7 +1,6 @@
 package com.epam.model;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -9,10 +8,11 @@ import java.util.regex.Pattern;
  */
 public interface BookComponent {
 
-    Pattern letterPattern = RegexPattern.LETTER_PATTERN.name;
+    Pattern pattern = RegexPattern.PARAGRAPH_PATTERN.name;
     Pattern sentencePattern = RegexPattern.SENTENCE_PATTERN.name;
-    Pattern punctuationPattern = RegexPattern.PUNCTUATION_PATTERN.name;
     Pattern sentenceEndPattern = RegexPattern.SENTENCE_END_PATTERN.name;
+    Pattern letterPattern = RegexPattern.LETTER_PATTERN.name;
+    Pattern punctuationPattern = RegexPattern.PUNCTUATION_PATTERN.name;
     Pattern whiteSpacePattern = RegexPattern.WHITE_SPACE_PATTERN.name;
     Pattern symbolPattern = RegexPattern.SYMBOL_PATTERN.name;
     ArrayList<String> value = new ArrayList<String>();

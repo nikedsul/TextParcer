@@ -28,7 +28,7 @@ public class Sentence extends Word {
                 if (flag != 0 && whiteSpaceMatcher.find()) {
                     Matcher sentenceMatcher = sentencePattern.matcher(sb.toString());
                     if (sentenceMatcher.find()) {
-                        sbFinal.append(sb.toString() + "\n");
+                        sbFinal.append(sb.toString().trim() + "\n");
                     }
                     sb.delete(0, Integer.MAX_VALUE);
                     flag = 0;

@@ -10,39 +10,33 @@ import java.util.regex.Pattern;
  */
 public class Paragraph extends Sentence {
 
-    private static Pattern pattern = RegexPattern.PARAGRAPH_PATTERN.name;
-
-    public Paragraph() {
-
-    }
-
-    public Pattern getPattern() {
-        return pattern;
-    }
-
-    @Override
-    public ArrayList<String> getValue() {
-        return value;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        StringBuilder sbFinal = new StringBuilder();
+        int flag = 0;
         if (value.size() > 0) {
-            for (String component : value) {
-                sb.append(component);
+            for (int i = 0; i < value.size(); i++) {
+                Matcher sentenceEndMatcher = sentenceEndPattern.matcher(value.get(i));
+                Matcher whiteSpaceMatcher = whiteSpacePattern.matcher(value.get(i));
+                sb.append(value.get(i));
+
+                if (sentenceEndMatcher.find() || value.get(i).equals("\n")) {
+                    flag++;
+                }
+
+                if (flag != 0 && whiteSpaceMatcher.find()) {
+                    Matcher sentenceMatcher = sentencePattern.matcher(sb.toString());
+                    if (sentenceMatcher.find()) {
+                        sbFinal.append(sb.toString().trim() + "\n");
+                    }
+                    sb.delete(0, Integer.MAX_VALUE);
+                    flag = 0;
+                }
             }
         } else {
             return "No sentences have been found!";
         }
-        return sb.toString();
-    }
-
-    @Override
-    public void compose() {
-        Matcher matcher = pattern.matcher(this.toString());
-        while (matcher.find()) {
-            value.add(matcher.group());
-        }
+        return sbFinal.toString();
     }
 }
