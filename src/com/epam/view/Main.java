@@ -2,8 +2,6 @@ package com.epam.view;
 
 import com.epam.model.*;
 
-import java.util.regex.Pattern;
-
 /**
  * Created by Nikolai on 03.12.2015.
  */

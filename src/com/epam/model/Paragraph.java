@@ -11,7 +11,6 @@ public class Paragraph extends Sentence {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         StringBuilder sbFinal = new StringBuilder();
-        int flag = 0;
         if (value.size() > 0) {
             for (int i = 0; i < value.size(); i++) {
                 sb.append(value.get(i));
@@ -21,7 +20,7 @@ public class Paragraph extends Sentence {
                     if (paragraphMatcher.find()) {
                         sbFinal.append(sb.toString().trim() + "\n");
                     }
-                    sb.delete(0, Integer.MAX_VALUE);
+                    sb.delete(0, Integer.MAX_VALUE).trimToSize();
                 }
             }
         } else {

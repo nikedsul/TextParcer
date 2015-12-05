@@ -3,8 +3,6 @@ package com.epam.model;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Created by Nikolai on 03.12.2015.
@@ -42,8 +40,7 @@ public class Symbol implements BookComponent {
         } catch(Exception ex){
             System.out.println(ex.getMessage());
         }
-        line = stringBuilder.toString().replaceAll("(\\n){2,}", "\n");
-        line = stringBuilder.toString().replaceAll("(\\s){2,}", "\n");
+        line = stringBuilder.toString().replaceAll("\\n{2,}", "\n").replaceAll("(\\s){2,}", " ");
         for (Character c : line.toCharArray()) {
             value.add(String.valueOf(c));
         }
