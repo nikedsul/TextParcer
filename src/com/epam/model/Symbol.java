@@ -43,7 +43,6 @@ public class Symbol implements BookComponent {
             System.out.println(ex.getMessage());
         }
         line = stringBuilder.toString().replaceAll("(\\s){2,}", " ");
-        line = line.replaceAll("(\\n){2,}", "\\n");
         for (Character c : line.toCharArray()) {
             value.add(String.valueOf(c));
         }

@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 public interface BookComponent {
 
     Pattern letterPattern = RegexPattern.LETTER_PATTERN.name;
+    Pattern sentencePattern = RegexPattern.SENTENCE_PATTERN.name;
     Pattern punctuationPattern = RegexPattern.PUNCTUATION_PATTERN.name;
     Pattern sentenceEndPattern = RegexPattern.SENTENCE_END_PATTERN.name;
     Pattern whiteSpacePattern = RegexPattern.WHITE_SPACE_PATTERN.name;

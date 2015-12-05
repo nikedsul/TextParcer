@@ -12,8 +12,8 @@ public class Main {
     public static void main(String[] args) {
         BookComponent symbol = new Symbol();
         BookComponent word = new Word();
-        Word sentence = new Sentence();
+        BookComponent sentence = new Sentence();
         BookComponent paragraph = new Paragraph();
-        System.out.println(word.toString());
+        System.out.println(sentence.toString());
     }
 }
