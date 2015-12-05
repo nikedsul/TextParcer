@@ -8,12 +8,12 @@ import java.util.regex.Pattern;
 public enum RegexPattern {
     PARAGRAPH_PATTERN       ("^[^(\\.)(.*(/{2}.*|;|\\\\{|}))]*"),
     CODE_PATTERN            (".*(/{2}.*|;|\\{|})"),
-    SENTENCE_PATTERN        ("[^((\\.)|(\\?)|!)]+(\\. )"),
+    SENTENCE_PATTERN        ("(\\p{Upper})[^\\.\\?!]+((\\.)|(\\?)|!)"),
     WORD_PATTERN            ("(\\d|\\s|)"),
     PUNCTUATION_PATTERN     ("\\p{Punct}"),
     WHITE_SPACE_PATTERN     ("\\s"),
     LETTER_PATTERN          ("[a-zA-Zа-яА-Я]"),
-    SENTENCE_END_PATTERN    ("((\\.)|(\\?)|!)"),
+    SENTENCE_END_PATTERN    ("[\\.\\?!]"),
     SENTENCE_START_PATTERN  ("[($\\s*)()]"),
     SYMBOL_PATTERN          (".");
 

@@ -30,7 +30,6 @@ public class Word implements BookComponent {
                     sb.append(value.get(i));
                     flag = 0;
                 } else if (whiteSpaceMatcher.find() && flag == 0) {
-
                     sb.append("\n");
                     flag++;
                 }

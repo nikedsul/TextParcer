@@ -1,6 +1,5 @@
 package com.epam.model;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 /**
@@ -15,31 +14,30 @@ public class Sentence extends Word {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         StringBuilder sbFinal = new StringBuilder();
-        String line = "";
         int flag = 0;
         if (value.size() > 0) {
             for (int i = 0; i < value.size(); i++) {
                 Matcher sentenceEndMatcher = sentenceEndPattern.matcher(value.get(i));
                 Matcher whiteSpaceMatcher = whiteSpacePattern.matcher(value.get(i));
                 sb.append(value.get(i));
-                if (sentenceEndMatcher.find()) {
+                if (flag != 0 && !whiteSpaceMatcher.find()) {
+                    flag = 0;
+                } else if (sentenceEndMatcher.find() || value.get(i).equals("\n")) {
                     flag++;
-                } else if (whiteSpaceMatcher.find() && flag != 0 && value.get(i-1).matches("((\\.)|(\\?)|!)")) {
-                    line = sb.toString();
-                    sb.append("\n");
+                } else if ((sentenceEndMatcher.find() || value.get(i).equals("\n")) && flag != 0) {
+                    flag = 0;
+                }
+                if (flag != 0 && whiteSpaceMatcher.find()) {
+                    Matcher sentenceMatcher = sentencePattern.matcher(sb.toString());
+                    if (sentenceMatcher.find()) {
+                        sbFinal.append(sb.toString() + "\n");
+                    }
+                    sb.delete(0, Integer.MAX_VALUE);
                     flag = 0;
                 }
             }
-            if (line.length() > 0) {
-                Matcher sentenceMatcher = sentencePattern.matcher(line);
-                if (sentenceMatcher.find()){
-                    sbFinal.append(line);
-                    line = "";
-                    sb.delete(0, Integer.MAX_VALUE);
-                }
-            }
         } else {
-            return "No symbols have been found!";
+            return "No sentences have been found!";
         }
         return sbFinal.toString();
     }
