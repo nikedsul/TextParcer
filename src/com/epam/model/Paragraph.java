@@ -1,9 +1,6 @@
 package com.epam.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by Nikolai on 03.12.2015.
@@ -17,21 +14,14 @@ public class Paragraph extends Sentence {
         int flag = 0;
         if (value.size() > 0) {
             for (int i = 0; i < value.size(); i++) {
-                Matcher sentenceEndMatcher = sentenceEndPattern.matcher(value.get(i));
-                Matcher whiteSpaceMatcher = whiteSpacePattern.matcher(value.get(i));
                 sb.append(value.get(i));
 
-                if (sentenceEndMatcher.find() || value.get(i).equals("\n")) {
-                    flag++;
-                }
-
-                if (flag != 0 && whiteSpaceMatcher.find()) {
-                    Matcher sentenceMatcher = sentencePattern.matcher(sb.toString());
-                    if (sentenceMatcher.find()) {
+                if (value.get(i).equals("\n")) {
+                    Matcher paragraphMatcher = paragraphPattern.matcher(sb.toString());
+                    if (paragraphMatcher.find()) {
                         sbFinal.append(sb.toString().trim() + "\n");
                     }
                     sb.delete(0, Integer.MAX_VALUE);
-                    flag = 0;
                 }
             }
         } else {

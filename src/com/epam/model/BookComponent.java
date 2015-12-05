@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  */
 public interface BookComponent {
 
-    Pattern pattern = RegexPattern.PARAGRAPH_PATTERN.name;
+    Pattern paragraphPattern = RegexPattern.PARAGRAPH_PATTERN.name;
     Pattern sentencePattern = RegexPattern.SENTENCE_PATTERN.name;
     Pattern sentenceEndPattern = RegexPattern.SENTENCE_END_PATTERN.name;
     Pattern letterPattern = RegexPattern.LETTER_PATTERN.name;

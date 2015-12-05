@@ -14,6 +14,6 @@ public class Main {
         BookComponent word = new Word();
         BookComponent sentence = new Sentence();
         BookComponent paragraph = new Paragraph();
-        System.out.println(sentence.toString());
+        System.out.println(paragraph.toString());
     }
 }

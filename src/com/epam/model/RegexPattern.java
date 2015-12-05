@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
  * Created by Nikolai on 03.12.2015.
  */
 public enum RegexPattern {
-    PARAGRAPH_PATTERN       ("^[^(\\.)(.*(/{2}.*|;|\\\\{|}))]*"),
+    PARAGRAPH_PATTERN       ("[А-ЯA-Z].*[\\.\\?!]"),
     CODE_PATTERN            (".*(/{2}.*|;|\\{|})"),
     SENTENCE_PATTERN        ("[А-ЯA-Z]([^?!.\\(]|\\([^\\)]*\\))*[.?!]"),
     WORD_PATTERN            ("(\\d|\\s|)"),
@@ -14,7 +14,6 @@ public enum RegexPattern {
     WHITE_SPACE_PATTERN     ("\\s"),
     LETTER_PATTERN          ("[a-zA-Zа-яА-Я]"),
     SENTENCE_END_PATTERN    ("[\\.\\?!]"),
-    SENTENCE_START_PATTERN  ("[($\\s*)()]"),
     SYMBOL_PATTERN          (".");
 
     /** A string for each pattern type */
