@@ -15,10 +15,12 @@ public interface BookComponent {
     Pattern punctuationPattern = RegexPattern.PUNCTUATION_PATTERN.name;
     Pattern whiteSpacePattern = RegexPattern.WHITE_SPACE_PATTERN.name;
     Pattern symbolPattern = RegexPattern.SYMBOL_PATTERN.name;
-    ArrayList<String> value = new ArrayList<String>();
+    
+    ArrayList<String> WHOLE_TEXT = new ArrayList<>();
 
-    String toString();
-    ArrayList<String> getValue();
-    void compose();
+    String toStringAll();
+    String toStringOne(int componentOrdinal);
+    ArrayList<String> getComponents();
+    void makeList();
 
 }

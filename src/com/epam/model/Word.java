@@ -6,39 +6,33 @@ import java.util.regex.Matcher;
 /**
  * Created by Nikolai on 03.12.2015.
  */
-public class Word implements BookComponent {
+public class Word extends Letter {
+    static ArrayList<String> letters = new ArrayList<>();
 
     public Word() {
     }
 
     @Override
-    public ArrayList<String> getValue() {
-        return value;
+    public ArrayList<String> getComponents() {
+        return letters;
     }
 
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        int flag = 0;
-        if (value.size() > 0) {
-            for (int i = 0; i < value.size(); i++) {
-                Matcher letterMatcher = letterPattern.matcher(value.get(i));
-                Matcher whiteSpaceMatcher = whiteSpacePattern.matcher(value.get(i));
+    public String toStringAll() {
+        return "";
+    }
+
+    @Override
+    public void makeList() {
+        if (WHOLE_TEXT.size() > 0) {
+            for (String letter : WHOLE_TEXT) {
+                Matcher letterMatcher = letterPattern.matcher(letter);
                 if (letterMatcher.find()) {
-                    sb.append(value.get(i));
-                    flag = 0;
-                } else if (whiteSpaceMatcher.find() && flag == 0) {
-                    sb.append("\n");
-                    flag++;
+                    letters.add(letterMatcher.group());
                 }
             }
         } else {
-            return "No symbols have been found!";
+            throw new UnsupportedOperationException();
         }
-        return sb.toString();
-    }
-
-    @Override
-    public void compose() {
     }
 }

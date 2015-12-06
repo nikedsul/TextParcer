@@ -7,33 +7,35 @@ import java.util.ArrayList;
 /**
  * Created by Nikolai on 03.12.2015.
  */
-public class Symbol implements BookComponent {
-    final static String FILE_NAME = "src/textBook.txt";
+public class TextParser implements BookComponent {
+    private static String fileName;
 
-    public Symbol() {
-        compose();
+    public TextParser(String fileName) {
+        this.fileName = fileName;
+        makeList();
     }
 
     @Override
-    public ArrayList<String> getValue() {
-        return value;
+    public ArrayList<String> getComponents() {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String string : this.value) {
-            stringBuilder.append(string + "\n");
-        }
-        return stringBuilder.toString();
+    public String toStringAll() {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public void compose() {
+    public String toStringOne(int componentOrdinal) {
+        return null;
+    }
+
+    @Override
+    public void makeList() {
         StringBuilder stringBuilder = new StringBuilder();
         String line;
         try {
-            BufferedReader bufferedReader = new BufferedReader (new FileReader(FILE_NAME));
+            BufferedReader bufferedReader = new BufferedReader (new FileReader(fileName));
             while((line = bufferedReader.readLine()) != null){
                 stringBuilder.append(line + "\n");
             }
@@ -42,7 +44,7 @@ public class Symbol implements BookComponent {
         }
         line = stringBuilder.toString().replaceAll("\\n{2,}", "\n").replaceAll("(\\s){2,}", " ");
         for (Character c : line.toCharArray()) {
-            value.add(String.valueOf(c));
+            WHOLE_TEXT.add(String.valueOf(c));
         }
     }
 }

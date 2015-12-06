@@ -1,5 +1,6 @@
 package com.epam.model;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 /**
@@ -7,36 +8,42 @@ import java.util.regex.Matcher;
  */
 public class Sentence extends Word {
 
+    static ArrayList<String> letters = new ArrayList<>();
+
     public Sentence() {
     }
 
     @Override
-    public String toString() {
+    public ArrayList<String> getComponents() {
+        return letters;
+    }
+
+    @Override
+    public String toStringAll() {
+        return letters.toString();
+    }
+
+    @Override
+    public void makeList() {
         StringBuilder sb = new StringBuilder();
-        StringBuilder sbFinal = new StringBuilder();
         int flag = 0;
-        if (value.size() > 0) {
-            for (int i = 0; i < value.size(); i++) {
-                Matcher sentenceEndMatcher = sentenceEndPattern.matcher(value.get(i));
-                Matcher whiteSpaceMatcher = whiteSpacePattern.matcher(value.get(i));
-                sb.append(value.get(i));
-
-                if (sentenceEndMatcher.find() || value.get(i).equals("\n")) {
-                    flag++;
-                }
-
-                if (flag != 0 && whiteSpaceMatcher.find()) {
-                    Matcher sentenceMatcher = sentencePattern.matcher(sb.toString());
-                    if (sentenceMatcher.find()) {
-                        sbFinal.append(sb.toString().trim() + "\n");
-                    }
-                    sb.delete(0, Integer.MAX_VALUE);
+        if (WHOLE_TEXT.size() > 0) {
+            for (int i = 0; i < WHOLE_TEXT.size(); i++) {
+                Matcher letterMatcher = letterPattern.matcher(WHOLE_TEXT.get(i));
+                Matcher whiteSpaceMatcher = whiteSpacePattern.matcher(WHOLE_TEXT.get(i));
+                if (letterMatcher.find()) {
+                    sb.append(WHOLE_TEXT.get(i));
                     flag = 0;
+                }
+                if (whiteSpaceMatcher.find() && flag == 0) {
+                    letters.add(sb.toString());
+                    sb.delete(0, Integer.MAX_VALUE);
+                    flag++;
                 }
             }
         } else {
-            return "No sentences have been found!";
+            throw new UnsupportedOperationException();
         }
-        return sbFinal.toString();
+
     }
 }

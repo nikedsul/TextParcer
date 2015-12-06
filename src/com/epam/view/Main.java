@@ -8,10 +8,8 @@ import com.epam.model.*;
 public class Main {
 
     public static void main(String[] args) {
-        BookComponent symbol = new Symbol();
-        BookComponent word = new Word();
-        BookComponent sentence = new Sentence();
+        TextParser text = new TextParser("src/textBook.txt");
         BookComponent paragraph = new Paragraph();
-        System.out.println(paragraph.toString());
+        System.out.println(paragraph.getComponents());
     }
 }
