@@ -8,19 +8,19 @@ import java.util.regex.Matcher;
  */
 public class Sentence extends Word {
 
-    static ArrayList<String> letters = new ArrayList<>();
+    static ArrayList<String> words = new ArrayList<>();
 
     public Sentence() {
     }
 
     @Override
     public ArrayList<String> getComponents() {
-        return letters;
+        return words;
     }
 
     @Override
     public String toStringAll() {
-        return letters.toString();
+        return words.toString();
     }
 
     @Override
@@ -36,7 +36,7 @@ public class Sentence extends Word {
                     flag = 0;
                 }
                 if (whiteSpaceMatcher.find() && flag == 0) {
-                    letters.add(sb.toString());
+                    words.add(sb.toString());
                     sb.delete(0, Integer.MAX_VALUE);
                     flag++;
                 }

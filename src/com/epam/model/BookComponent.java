@@ -12,7 +12,8 @@ public interface BookComponent {
     Pattern sentencePattern = RegexPattern.SENTENCE_PATTERN.name;
     Pattern sentenceEndPattern = RegexPattern.SENTENCE_END_PATTERN.name;
     Pattern letterPattern = RegexPattern.LETTER_PATTERN.name;
-    Pattern punctuationPattern = RegexPattern.PUNCTUATION_PATTERN.name;
+    Pattern codePattern = RegexPattern.CODE_PATTERN.name;
+    Pattern codeEndPattern = RegexPattern.CODE_END_PATTERN.name;
     Pattern whiteSpacePattern = RegexPattern.WHITE_SPACE_PATTERN.name;
     Pattern symbolPattern = RegexPattern.SYMBOL_PATTERN.name;
     
