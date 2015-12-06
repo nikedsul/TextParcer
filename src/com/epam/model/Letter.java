@@ -6,8 +6,13 @@ import java.util.ArrayList;
  * Created by Nikolai on 03.12.2015.
  */
 public class Letter implements BookComponent {
+
+    /**
+     * The list symbols contains all symbols of the text
+     */
     static ArrayList<String> symbols = new ArrayList<>();
 
+    /** Constructor */
     public Letter() {
         makeList();
     }
@@ -21,7 +26,7 @@ public class Letter implements BookComponent {
     public String toStringAll() {
         StringBuilder stringBuilder = new StringBuilder();
         for (String string : symbols) {
-            stringBuilder.append(string + "\n");
+            stringBuilder.append(string).append("\n");
         }
         return stringBuilder.toString();
     }
@@ -31,7 +36,7 @@ public class Letter implements BookComponent {
         if ((symbols.size() - 1) < componentOrdinal) {
             return "There are only " + symbols.size() + " components in the list!";
         }
-        return WHOLE_TEXT.get(componentOrdinal);
+        return symbols.get(componentOrdinal);
     }
 
     @Override

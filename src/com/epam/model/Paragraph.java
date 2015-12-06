@@ -1,6 +1,9 @@
 package com.epam.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 
 /**
@@ -8,6 +11,9 @@ import java.util.regex.Matcher;
  */
 public class Paragraph extends Sentence {
 
+    /**
+     * The list sentences contains all the sentences of the text
+     */
     static ArrayList<String> sentences = new ArrayList<>();
 
     public Paragraph() {
@@ -29,7 +35,7 @@ public class Paragraph extends Sentence {
                 if (WHOLE_TEXT.get(i).equals("\n")) {
                     Matcher paragraphMatcher = paragraphPattern.matcher(sb.toString());
                     if (paragraphMatcher.find()) {
-                        sbFinal.append(sb.toString().trim() + "\n");
+                        sbFinal.append(sb.toString().trim()).append("\n");
                     }
                     sb.delete(0, Integer.MAX_VALUE).trimToSize();
                 }
@@ -42,7 +48,10 @@ public class Paragraph extends Sentence {
 
     @Override
     public String toStringOne(int componentOrdinal) {
-        return super.toStringOne(componentOrdinal);
+        if ((sentences.size() - 1) < componentOrdinal) {
+            return "There are only " + sentences.size() + " components in the list!";
+        }
+        return sentences.get(componentOrdinal);
     }
 
     @Override
@@ -71,5 +80,54 @@ public class Paragraph extends Sentence {
         } else {
             throw new UnsupportedOperationException();
         }
+    }
+
+    /**
+     * Method makeHashMapRepeated creates a HashMap of repeated words from only sentences (no code!) of the text
+     * @return
+     */
+    private HashMap makeHashMapRepeated() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < sentences.size(); i++) {
+            sb.append(sentences.get(i));
+        }
+        String[] onlyWords = sb.toString().split("(\\s|\\p{Punct}\\s)");
+
+        List<String> list = Arrays.asList(onlyWords);
+
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        Integer counter;
+        for (String i : list) {
+            counter = hashMap.get(i);
+            hashMap.put(i, counter == null ? 1 : counter + 1);
+        }
+
+        for (Object key : hashMap.keySet().toArray()) {
+
+            if (hashMap.get(key) == 1) {
+
+                hashMap.remove(key);
+            }
+        }
+
+        return hashMap;
+    }
+
+    /**
+     * Method printRepeatedWords returns a string with all repeated words in sentences (no code!) of the text
+     * @return
+     */
+    public String printRepeatedWords() {
+        StringBuilder s = new StringBuilder();
+        for (Object value : makeHashMapRepeated().keySet()) {
+            s.append(value.toString()).append(" is found in the sentences: ");
+            for (int i = 0; i < sentences.size(); i++) {
+                if (sentences.get(i).contains(value.toString())) {
+                    s.append(i).append(" ");
+                }
+            }
+            s.append("\n");
+        }
+        return s.toString();
     }
 }

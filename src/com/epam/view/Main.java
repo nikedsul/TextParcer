@@ -12,8 +12,9 @@ public class Main {
         BookComponent letter = new Letter();
         BookComponent word = new Word();
         BookComponent sentence = new Sentence();
-        BookComponent paragraph = new Paragraph();
+        Paragraph paragraph = new Paragraph();
         BookComponent code = new Code();
-        System.out.println(code.toStringAll());
+        System.out.println(paragraph.printRepeatedWords());
+        System.out.println(paragraph.toStringOne(1));
     }
 }

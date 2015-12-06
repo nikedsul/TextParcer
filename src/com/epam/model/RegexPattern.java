@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public enum RegexPattern {
     PARAGRAPH_PATTERN       ("[А-ЯA-Z][^!.?]*[\\.\\?!]$"),
     CODE_PATTERN            (".*(/{2}.*|;|\\{|})"),
-    CODE_END_PATTERN        ("[;}{]"),
+    CODE_END_PATTERN        ("[;]"),
     SENTENCE_PATTERN        ("[А-ЯA-Z]([^?!.\\(]|\\([^\\)]*\\))*[.?!]"),
     WORD_PATTERN            ("(\\d|\\s|)"),
     PUNCTUATION_PATTERN     ("\\p{Punct}"),
@@ -22,7 +22,7 @@ public enum RegexPattern {
 
     /**
      * Create constructor
-     * @param pattern
+     * @param pattern is a ready pattern for matching
      */
     RegexPattern(String pattern) {
         this.name = Pattern.compile(pattern, Pattern.DOTALL);

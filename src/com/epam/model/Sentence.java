@@ -8,8 +8,12 @@ import java.util.regex.Matcher;
  */
 public class Sentence extends Word {
 
+    /**
+     * The list words contains all the words of the text
+     */
     static ArrayList<String> words = new ArrayList<>();
 
+    /** Constructor */
     public Sentence() {
     }
 
@@ -21,6 +25,14 @@ public class Sentence extends Word {
     @Override
     public String toStringAll() {
         return words.toString();
+    }
+
+    @Override
+    public String toStringOne(int componentOrdinal) {
+        if ((words.size() - 1) < componentOrdinal) {
+            return "There are only " + words.size() + " components in the list!";
+        }
+        return words.get(componentOrdinal);
     }
 
     @Override
