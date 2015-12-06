@@ -1,4 +1,6 @@
-package com.epam.model;
+package com.epam.model.textComponents;
+
+import com.epam.model.BookComponent;
 
 import java.util.ArrayList;
 

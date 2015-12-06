@@ -1,4 +1,4 @@
-package com.epam.model;
+package com.epam.model.textComponents;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,24 +26,11 @@ public class Paragraph extends Sentence {
 
     @Override
     public String toStringAll() {
-        StringBuilder sb = new StringBuilder();
-        StringBuilder sbFinal = new StringBuilder();
-        if (WHOLE_TEXT.size() > 0) {
-            for (int i = 0; i < WHOLE_TEXT.size(); i++) {
-                sb.append(WHOLE_TEXT.get(i));
-
-                if (WHOLE_TEXT.get(i).equals("\n")) {
-                    Matcher paragraphMatcher = paragraphPattern.matcher(sb.toString());
-                    if (paragraphMatcher.find()) {
-                        sbFinal.append(sb.toString().trim()).append("\n");
-                    }
-                    sb.delete(0, Integer.MAX_VALUE).trimToSize();
-                }
-            }
-        } else {
-            return "No sentences have been found!";
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String string : sentences) {
+            stringBuilder.append(string).append("\n");
         }
-        return sbFinal.toString();
+        return stringBuilder.toString();
     }
 
     @Override

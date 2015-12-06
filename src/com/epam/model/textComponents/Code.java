@@ -1,4 +1,6 @@
-package com.epam.model;
+package com.epam.model.textComponents;
+
+import com.epam.model.BookComponent;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -15,7 +17,7 @@ public class Code implements BookComponent {
 
     /** Constructor */
     public Code() {
-
+        makeList();
     }
 
     @Override
@@ -25,7 +27,6 @@ public class Code implements BookComponent {
 
     @Override
     public String toStringAll() {
-        int i = 0;
         StringBuilder stringBuilder = new StringBuilder();
         for (String string : codes) {
             stringBuilder.append(string).append("\n");

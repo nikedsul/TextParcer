@@ -1,6 +1,7 @@
 package com.epam.view;
 
 import com.epam.model.*;
+import com.epam.model.textComponents.*;
 
 /**
  * Created by Nikolai on 03.12.2015.
@@ -15,6 +16,6 @@ public class Main {
         Paragraph paragraph = new Paragraph();
         BookComponent code = new Code();
         System.out.println(paragraph.printRepeatedWords());
-        System.out.println(paragraph.toStringOne(1));
+        System.out.println(text.toStringAll());
     }
 }

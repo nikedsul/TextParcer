@@ -1,4 +1,4 @@
-package com.epam.model;
+package com.epam.model.textComponents;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -24,7 +24,11 @@ public class Sentence extends Word {
 
     @Override
     public String toStringAll() {
-        return words.toString();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String string : words) {
+            stringBuilder.append(string).append("\n");
+        }
+        return stringBuilder.toString();
     }
 
     @Override

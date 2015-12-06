@@ -1,4 +1,6 @@
-package com.epam.model;
+package com.epam.model.textComponents;
+
+import com.epam.model.BookComponent;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -24,7 +26,11 @@ public class Word extends Letter {
 
     @Override
     public String toStringAll() {
-        return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String string : letters) {
+            stringBuilder.append(string).append("\n");
+        }
+        return stringBuilder.toString();
     }
 
     @Override
@@ -37,9 +43,9 @@ public class Word extends Letter {
 
     @Override
     public void makeList() {
-        if (WHOLE_TEXT.size() > 0) {
-            for (String letter : WHOLE_TEXT) {
-                Matcher letterMatcher = letterPattern.matcher(letter);
+        if (BookComponent.WHOLE_TEXT.size() > 0) {
+            for (String letter : BookComponent.WHOLE_TEXT) {
+                Matcher letterMatcher = BookComponent.letterPattern.matcher(letter);
                 if (letterMatcher.find()) {
                     letters.add(letterMatcher.group());
                 }
